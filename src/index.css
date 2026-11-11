@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+
+/* =============================================================================
+   SISTEMA DE DISEÑO — "Cinemático oscuro"  (Tailwind CSS v4, config en CSS)
+   -----------------------------------------------------------------------------
+   Cada variable de @theme genera utilidades:
+     --color-accent  ->  text-accent / bg-accent / border-accent
+     --font-display  ->  font-display
+   PARA CAMBIAR EL COLOR DE ACENTO DE TODO EL SITIO: edita --color-accent.
+   (El canvas del Hero lo lee de esta misma variable.)
+   ========================================================================== */
+@theme {
+  --color-ink: #0a0a0a; /* fondo */
+  --color-coal: #141414; /* superficies */
+  --color-bone: #ededea; /* texto principal */
+  --color-ash: #8a8a85; /* texto secundario */
+  --color-accent: #c8f542; /* único acento */
+
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Velocidad del carrusel de logos: cambia los 40s. */
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa la navbar fija al saltar con anclas. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    -webkit-font-smoothing: antialiased;
+    /* `clip` (no `hidden`): evita scroll horizontal SIN romper position:sticky,
+       del que dependen las secciones fijadas (Perfil y Proyectos). */
+    overflow-x: clip;
+  }
+
+  /* Grano de película: una capa fija y estática sobre toda la página.
+     No usa blend-modes ni se anima, así que su costo es prácticamente nulo. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-bone) 25%, transparent);
+    border-radius: 99px;
+  }
+
+  /* ACCESIBILIDAD: sin movimiento si el sistema lo pide. Los componentes JS
+     además usan useReducedMotion / <MotionConfig reducedMotion="user">. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Texto solo con contorno (títulos "fantasma"). */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--color-bone) 45%, transparent);
+}
+
+/* Etiqueta mono pequeña, usada en toda la página. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
