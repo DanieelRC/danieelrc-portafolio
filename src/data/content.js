@@ -28,7 +28,7 @@ export const nav = [
 ]
 
 export const hero = {
-  eyebrow: 'Portafolio — 2026',
+  eyebrow: 'Portafolio',
   status: 'Disponible para nuevos proyectos',
   tagline:
     'Construyo productos web y móviles de principio a fin, y les integro modelos de lenguaje que resuelven problemas reales.',
@@ -121,14 +121,14 @@ export const projects = [
     stack: ['Gemini', 'IBM Watson', 'Google Maps Platform', 'Liderazgo técnico'],
   },
   {
-    id: 'saes',
+    id: 'gestor-escolar',
     name: 'Gestión Escolar + Asistente',
-    kind: 'Sistema tipo SAES con asistente de normativa académica',
+    kind: 'Sistema de gestión escolar potenciado con un asistente de normativa académica',
     role: 'Desarrollo full-stack e IA',
     period: 'Ago 2025 — Dic 2025',
     highlight: 'LLM local en CPU',
     bullets: [
-      'Sistema de gestión escolar tipo SAES (IPN) con React, Node.js y una base de datos SQL interna (SAES-R).',
+      'Sistema de gestión escolar con React, Node.js y una base de datos SQL interna.',
       'Dos versiones del chatbot de normativa: una sobre la API de un LLM externo y otra con un modelo Phi de Microsoft cuantizado, ejecutado localmente en CPU.',
       'Lógica para resolver dudas de normativa y situaciones escolares: riesgo de reprobación, dictaminado, alumno regular o irregular.',
     ],
@@ -145,7 +145,7 @@ export const projects = [
     bullets: [
       'Aplicación web completa con TypeScript, React y Node.js bajo metodología ágil SCRUM.',
       'Tecnologías de PLN para automatizar la estructuración y redacción de borradores de proyectos de ley para legisladores estatales.',
-      'Demostró el potencial de reducir la formulación de 1-3 meses a 1-3 semanas, logro reconocido por el Senado de la República.',
+      'Demostró el potencial de reducir la formulación de 1-3 meses a 1-3 semanas, logro reconocido de manera no publica por el Senado de la República.',
     ],
     stack: ['TypeScript', 'React', 'Node.js', 'PLN', 'Vercel'],
   },

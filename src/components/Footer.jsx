@@ -70,7 +70,7 @@ export default function Footer() {
 
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-6 sm:px-10">
         <p className="label text-ash">
-          © {new Date().getFullYear()} · Hecho en CDMX
+          © {new Date().getFullYear()}
         </p>
         <a
           href="#inicio"
