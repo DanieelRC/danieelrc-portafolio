@@ -46,7 +46,7 @@ export const about = {
     'Soy estudiante de Ingeniería en *Inteligencia Artificial* en ESCOM IPN, con enfoque en desarrollo *full-stack* e integración de *modelos de lenguaje.* Mi base es el software —TypeScript, Python, React y Node.js— con proyectos desplegados en Vercel, Hostinger y Azure. Me interesa construir *soluciones prácticas con IA* y explicar las decisiones técnicas a personas no técnicas.',
   // `value` numérico -> contador animado. `text` -> se muestra tal cual.
   stats: [
-    { value: 5, label: 'proyectos construidos de principio a fin' },
+    { value: 11, label: 'proyectos entre producción, investigación y código abierto' },
     { value: 3, label: 'plataformas de despliegue: Vercel, Hostinger y Azure' },
     { value: 1, label: 'app móvil en producción para el negocio de un cliente' },
     {
@@ -79,6 +79,21 @@ export const bigMarquee = [
  * `link` es opcional. `highlight` es el dato que se destaca en grande.
  */
 export const projects = [
+  {
+    id: 'articulia',
+    name: 'ArticulIA',
+    kind: 'Agente que responde dudas legales citando el artículo exacto',
+    role: 'Diseño, desarrollo y evaluación · proyecto propio',
+    period: 'Nov 2026 — En desarrollo',
+    highlight: '100% de citas válidas',
+    repo: 'https://github.com/DanieelRC/ArticulIA',
+    bullets: [
+      'Agente con LangGraph sobre seis leyes federales mexicanas (5,089 artículos): búsqueda híbrida de texto completo y embeddings bge-m3 en PostgreSQL con pgvector, más reranker.',
+      'Un verificador rechaza cualquier respuesta sin respaldo: cada cita se coteja contra los artículos recuperados y, si no hay evidencia, el sistema se abstiene en lugar de inventar.',
+      'Evaluado con un dataset propio de 60 preguntas: citas válidas 1.00, abstención correcta 1.00 y fidelidad Ragas 0.90. API FastAPI con streaming SSE, servidor MCP, control de gasto y despliegue con Docker.',
+    ],
+    stack: ['LangGraph', 'RAG híbrido', 'pgvector', 'FastAPI', 'Ragas', 'React', 'Docker'],
+  },
   {
     id: 'ecommerce',
     name: 'E-commerce con IA',
@@ -118,6 +133,7 @@ export const projects = [
       'Modelos de Gemini e IBM Watson para simular visualmente el impacto de las obras, y Google Maps Platform para el mapeo georreferenciado de las propuestas.',
       'Sistema de toma de decisiones con cálculo presupuestario automatizado y priorización democrática de las necesidades vecinales.',
     ],
+    repo: 'https://github.com/DanieelRC/Comunidad-Viva',
     stack: ['Gemini', 'IBM Watson', 'Google Maps Platform', 'Liderazgo técnico'],
   },
   {
@@ -132,6 +148,7 @@ export const projects = [
       'Dos versiones del chatbot de normativa: una sobre la API de un LLM externo y otra con un modelo Phi de Microsoft cuantizado, ejecutado localmente en CPU.',
       'Lógica para resolver dudas de normativa y situaciones escolares: riesgo de reprobación, dictaminado, alumno regular o irregular.',
     ],
+    repo: 'https://github.com/DanieelRC/SAES-R',
     stack: ['React', 'Node.js', 'SQL', 'Phi cuantizado', 'LLM API'],
   },
   {
@@ -147,7 +164,68 @@ export const projects = [
       'Tecnologías de PLN para automatizar la estructuración y redacción de borradores de proyectos de ley para legisladores estatales.',
       'Demostró el potencial de reducir la formulación de 1-3 meses a 1-3 semanas, logro reconocido de manera no publica por el Senado de la República.',
     ],
+    repo: 'https://github.com/DanieelRC/LegislaBot',
     stack: ['TypeScript', 'React', 'Node.js', 'PLN', 'Vercel'],
+  },
+]
+
+/**
+ * MÁS EN GITHUB — cuadrícula bajo los proyectos destacados.
+ * `link` (demo en vivo) es opcional; `repo` es obligatorio.
+ */
+export const githubUrl = 'https://github.com/DanieelRC'
+
+export const moreProjects = [
+  {
+    name: 'ClearStreets',
+    kind: 'App Android que detecta baches y basura en la vía pública',
+    year: '2026',
+    tag: 'Visión por computadora',
+    summary:
+      'Detección en vivo con YOLO ejecutado en el teléfono (TFLite), geolocalización, anonimización de rostros y placas, cola sin conexión y agrupación de incidencias por cercanía en PostGIS. Modo ciudadano con mapa, alertas y rutas.',
+    stack: ['React Native', 'Expo', 'TFLite', 'Supabase', 'PostGIS', 'Mapbox'],
+    repo: 'https://github.com/DanieelRC/ClearStreets',
+  },
+  {
+    name: 'Clonación de voz explicable',
+    kind: 'XTTS-v2 desarmado etapa por etapa',
+    year: '2026',
+    tag: 'Audio · Deep learning',
+    summary:
+      'Recorre las seis etapas de un sistema de clonación de voz —espectrogramas, Perceiver, GPT-2 autoregresivo, DVAE y HiFi-GAN— con visualizaciones de cada paso y una aplicación web para grabar y procesar audio.',
+    stack: ['Python', 'PyTorch', 'XTTS-v2', 'Flask'],
+    repo: 'https://github.com/DanieelRC/Proyecto-ClonacionVoz',
+  },
+  {
+    name: 'La semana en juego',
+    kind: 'Dinámica de clase en tiempo real',
+    year: '2026',
+    tag: 'Web en tiempo real',
+    summary:
+      'App para 30-40 participantes simultáneos desde el celular: sala con PIN y QR, votaciones, cronómetros, vista de proyector y panel de administración. Las reglas del juego viven en un motor probado.',
+    stack: ['Next.js 15', 'Supabase Realtime', 'Tailwind', 'Vercel'],
+    repo: 'https://github.com/DanieelRC/DHA-GestionTiempo',
+    link: 'https://semana-en-juego.vercel.app',
+  },
+  {
+    name: 'Dynamic Learning',
+    kind: 'Skill de Claude Code para entrevistas técnicas',
+    year: '2026',
+    tag: 'Herramientas de IA',
+    summary:
+      'A partir de un problema de LeetCode genera presentaciones HTML animadas: el diagrama se mueve mientras se resalta la línea de código en ejecución. Incluye modo práctica con pistas progresivas y exportación a video.',
+    stack: ['Claude Code', 'JavaScript', 'HTML animado'],
+    repo: 'https://github.com/DanieelRC/dynamic-learning-skill',
+  },
+  {
+    name: 'BHA-PSO',
+    kind: 'Optimización bioinspirada de una viga soldada',
+    year: '2025',
+    tag: 'Algoritmos bioinspirados',
+    summary:
+      'Algoritmo híbrido Black Hole + Particle Swarm Optimization con manejo de restricciones por Stochastic Ranking y análisis ANOVA para ajustar parámetros. Incluye una versión didáctica del BHA en MATLAB con animación.',
+    stack: ['Python', 'NumPy', 'MATLAB', 'ANOVA'],
+    repo: 'https://github.com/DanieelRC/BHA-PSO-OptimizacionViga',
   },
 ]
 
@@ -165,6 +243,10 @@ export const skillGroups = [
       'Búsqueda semántica',
       'Bases vectoriales',
       'PLN',
+      'Agentes con LangGraph',
+      'Evaluación con Ragas',
+      'Visión por computadora (YOLO)',
+      'PyTorch',
       'Modelos cuantizados en CPU',
       'Modelos predictivos',
       'Algoritmos bioinspirados',
@@ -172,11 +254,11 @@ export const skillGroups = [
   },
   {
     title: 'Frontend & Móvil',
-    items: ['React', 'React Native', 'Vite', 'Tailwind CSS'],
+    items: ['React', 'Next.js', 'React Native', 'Expo', 'Vite', 'Tailwind CSS'],
   },
   {
     title: 'Backend & Datos',
-    items: ['Node.js', 'Flask', 'PostgreSQL', 'Supabase', 'MySQL', 'SQLite', 'Docker', 'Stripe API'],
+    items: ['Node.js', 'FastAPI', 'Flask', 'PostgreSQL', 'pgvector', 'PostGIS', 'Supabase', 'MySQL', 'SQLite', 'Docker', 'Stripe API'],
   },
   {
     title: 'Cloud & Deploy',

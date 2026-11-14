@@ -102,8 +102,8 @@ function HorizontalProjects() {
               className="font-display text-[clamp(2.8rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-bone"
             />
             <p className="mt-6 max-w-sm text-base leading-relaxed text-ash">
-              Cinco proyectos construidos de principio a fin: producto, backend,
-              datos e integración de modelos de lenguaje.
+              Los proyectos más completos: producto, backend, datos e
+              integración de modelos de lenguaje, de principio a fin.
             </p>
             <p className="label mt-10 flex items-center gap-3 text-accent">
               Sigue bajando
@@ -244,21 +244,38 @@ function ProjectCard({ project, index, className = '' }) {
             ))}
           </ul>
 
-          {project.link && (
-            <a
-              href={project.link.href}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="label group/link mt-6 inline-flex items-center gap-2 text-bone transition-colors duration-300 hover:text-accent"
-            >
-              <span className="border-b border-bone/30 pb-0.5 group-hover/link:border-accent">
-                {project.link.label}
-              </span>
-              <Icons.arrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-            </a>
+          {(project.link || project.repo) && (
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+              {project.link && (
+                <CardLink href={project.link.href}>{project.link.label}</CardLink>
+              )}
+              {project.repo && (
+                <CardLink href={project.repo} icon={Icons.github}>
+                  Código en GitHub
+                </CardLink>
+              )}
+            </div>
           )}
         </div>
       </div>
     </article>
+  )
+}
+
+/** Enlace pequeño de la tarjeta (demo o repositorio). */
+function CardLink({ href, icon: Icon, children }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className="label group/link inline-flex items-center gap-2 text-bone transition-colors duration-300 hover:text-accent"
+    >
+      {Icon && <Icon className="h-3.5 w-3.5" />}
+      <span className="border-b border-bone/30 pb-0.5 group-hover/link:border-accent">
+        {children}
+      </span>
+      <Icons.arrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+    </a>
   )
 }

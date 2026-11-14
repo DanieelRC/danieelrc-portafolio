@@ -7,6 +7,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import VelocityMarquee from './components/VelocityMarquee'
 import Projects from './components/Projects'
+import OpenSource from './components/OpenSource'
 import Skills from './components/Skills'
 import Journey from './components/Journey'
 import Contact from './components/Contact'
@@ -55,6 +56,7 @@ export default function App() {
         <About />
         <VelocityMarquee />
         <Projects />
+        <OpenSource />
         <Skills />
         <Journey />
         <Contact />
